@@ -1,0 +1,83 @@
+<div class="card p-4">
+    <div class="card-body">
+      <h5 >Plans</h5>
+  
+      <!-- Floating Labels Form -->
+      <form class="row g-3" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" >
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="text" class="form-control" placeholder="name" formControlName="name">
+            <label for="name">Name</label>
+            <em class="text-danger text-small"  *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please Enter Name </em>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="text" class="form-control" placeholder="duration" formControlName="duration">
+            <label for="duration">Duration</label>
+            <em class="text-danger text-small"  *ngIf="formdata.controls.duration.touched && formdata.controls.duration.invalid">Please Enter Duration </em>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="number" class="form-control" placeholder="amount" formControlName="amount">
+            <label for="amount">Amount</label>
+            <em class="text-danger text-small"  *ngIf="formdata.controls.amount.touched && formdata.controls.amount.invalid">Please Enter Amount </em>
+          </div>
+        </div>
+  
+  
+        <div class=>
+          <button type="submit" class="btn btn-primary " [disabled]="formdata.invalid">Submit</button>
+          <button type="reset" class="btn btn-danger ms-2" (click)="reset()">Reset</button>
+        </div>
+      </form><!-- End floating Labels Form -->
+  
+    </div>
+  </div>
+  
+  
+  <div class="col-lg-12">
+  
+    <div class="card p-4">
+      <div class="card-body">
+        <h5 >Plans</h5>
+  
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="width:110px">Actions</th>
+              <th >No</th>
+              <th >Name</th>
+              <th >Duration</th>
+              <th >Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of result; let i = index;">
+  
+               <td class="d-flex">
+  
+                <button type="button" class="btn btn-primary" (click)="edit(data._id)"><i class="bi bi-pencil-square me-1"></i></button>
+                <button type="button" class="btn btn-danger ms-2" (click)="delete(data._id)"><i class="bi bi-trash me-1"></i></button>
+  
+  
+              </td>
+              <td>{{i+1}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.duration}}</td>
+              <td>{{data.amount}}</td>
+            </tr>
+  
+          </tbody>
+        </table>
+        <!-- End Table with stripped rows -->
+  
+      </div>
+    </div>
+  
+  
+  </div>

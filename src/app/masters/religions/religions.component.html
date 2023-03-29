@@ -1,0 +1,60 @@
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="pt-4 fw-bolder text-success">Religions</h4>
+    </div>
+  </div>
+
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <form autocomplete="off" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="row g-3">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-floating">
+            <input type="text" class="form-control mt-5" id="floatingName" placeholder="Your Relation"
+              formControlName="name">
+            <em class="error text-danger small"
+              *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please
+              Enter Religion</em>
+            <label for="floatingName">Religion</label>
+          </div>
+        </div>
+      </div>
+      <div class="pt-4">
+        <input type="submit" class="btn btn-primary me-2" value="Submit" />
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Actions</th>
+            <th>No</th>
+            <th>Religions</th>
+            <th>Subreligions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of data , let i = index">
+            <td>
+              <button (click)="edit(d._id)" class="btn btn-primary"><i class="bi bi-pencil-square"> </i></button>
+              <button (click)="delete(d._id)" class="btn btn-danger ms-2"> <i class="bi bi-trash"> </i></button>
+            </td>
+            <td>{{i+1}}</td>
+            <td>{{d.name}}</td>
+
+            <td><a class="btn btn-sm btn-success" routerLink="/masters/subreligion/{{d._id}}">Subreligions</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

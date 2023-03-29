@@ -1,0 +1,61 @@
+
+
+<div class="card">
+  <div class=" d-flex card-body mt-3 justify-content-between">
+    <h4 *ngIf="religion" class="pt-4 fw-bolder text-success" >Religion For - {{ religion.name }}</h4>
+    <span><button class="btn btn-success" (click)="back()">Back</button></span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <form autocomplete="off" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="row  g-3">
+      <input type="hidden" formControlName="religionid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-floating">
+            <input type="text" class="form-control mt-5" id="floatingName" placeholder="Your Subreligion"
+              formControlName="name">
+            <em class="error text-danger small"
+              *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please
+              Enter Subreligion</em>
+            <label for="floatingName">Subreligion</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <input type="submit" class="btn btn-primary me-2" value="Submit" />
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Actions</th>
+            <th>No</th>
+            <th>Subreligion</th>
+            <!-- <th>Religions ID</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of data , let i = index">
+            <td>
+              <button (click)="edit(d._id)" class="btn btn-primary"><i class="bi bi-pencil-square"> </i></button>
+              <button (click)="delete(d._id)" class="btn btn-danger ms-2"> <i class="bi bi-trash"> </i></button>
+            </td>
+            <td>{{i+1}}</td>
+            <td>{{d.name}}</td>
+            <!-- <td>{{d.religionid}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

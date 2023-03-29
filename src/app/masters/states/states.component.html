@@ -1,0 +1,72 @@
+<div class="card">
+    <div class="card-body mt-3">
+        <h4>States</h4>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+
+        <!-- Floating Labels Form -->
+        <form class="row g-3" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+            <div class="row">
+                <div class="row ">
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="name" id="floatingName"
+                                placeholder="Your Name">
+                            <label for="floatingName">State</label>
+                            <em class="text-danger text-small" *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please Enter State </em>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div>
+                <input type="submit" class="btn btn-primary me-2" value="Submit" />
+                <input type="reset" class="btn btn-danger me-2" value="Cancel" />
+            </div>
+        </form><!-- End floating Labels Form -->
+
+    </div>
+</div>
+
+
+
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Table with stripped rows</h5>
+
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col">Action</th>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>District</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of data, let i=index">
+                    <td> 
+                        <button (click)="edit(d._id)" class="btn btn-primary"><i class="bi bi-pencil-square"> </i></button>&nbsp;
+                        <button (click)="delete(d._id)" class="btn btn-danger"><i class="bi bi-trash"> </i></button>
+                        
+                    </td>
+                    <td>{{i+1}}</td>
+                    <td>{{d.name}}</td>
+                    <td >
+                        <button routerLink="/masters/districts/{{d._id}}"  class="btn btn-success" ><i class="ri-arrow-right-fill"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- End Table with stripped rows -->
+
+    </div>
+</div>

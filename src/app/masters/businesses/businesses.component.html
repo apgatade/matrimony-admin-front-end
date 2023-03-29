@@ -1,0 +1,220 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Businesses</h5>
+
+    <!-- Floating Labels Form -->
+    <form class="row g-3" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+      <!-- name -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" formControlName="name" placeholder="Plan name">
+          <label for="floatingName">Name <span class="text-danger">*</span> </label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please Enter Name</em>
+      </div>
+
+      <!-- ownername -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" formControlName="ownername" placeholder="Amount">
+          <label for="floatingName">Ownerame <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.ownername.touched && formdata.controls.ownername.invalid">Please Enter Ownerame</em>
+      </div>
+
+      <!-- address -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" formControlName="address" placeholder="Address">
+          <label for="floatingName">Address <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.address.touched && formdata.controls.address.invalid">Please Enter Address</em>
+      </div>
+
+      <!-- townid -->
+      <div class="col-md-3">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="floatingSelect" aria-label="State" 
+            (change)="townChanged($event)" formControlName="townid">
+            <option value="1">Oregon</option>
+            <option value="2">DC</option>
+          </select>
+          <label for="floatingSelect">Town <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.townid.touched && formdata.controls.townid.invalid">Please Enter Town</em>
+      </div>
+
+      <!-- email -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="email" class="form-control" formControlName="email" placeholder="Profileviews">
+          <label for="floatingName">Email <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.email.touched && formdata.controls.email.invalid">Please Enter Email</em>
+      </div>
+
+      <!-- mobile no -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" formControlName="mobileno" placeholder="Profileviews">
+          <label for="floatingName">Mobile No. <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.mobileno.touched && formdata.controls.mobileno.invalid">Please Enter Mobile No.</em>
+      </div>
+
+      <!-- password -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" formControlName="password" placeholder="Profileviews">
+          <label for="floatingName">Password <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please Enter Password</em>
+      </div>
+
+      <!-- tagline -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" formControlName="tagline" placeholder="Profileviews">
+          <label for="floatingName">Tag line <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.tagline.touched && formdata.controls.tagline.invalid">Please Enter Tagline</em>
+      </div>
+
+      <!-- website -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" formControlName="website" placeholder="Profileviews">
+          <label for="floatingName">Website Name <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.website.touched && formdata.controls.website.invalid">Please Enter Website</em>
+      </div>
+
+      <!-- account opening date -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="date" class="form-control" formControlName="accountopeningdate" placeholder="Profileviews">
+          <label for="floatingName">Account Opening Date <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.accountopeningdate.touched && formdata.controls.accountopeningdate.invalid">Please
+          Enter Date</em>
+      </div>
+
+      <!-- account expiry date -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="date" class="form-control" formControlName="accountexpdate" placeholder="Profileviews">
+          <label for="floatingName">Account Expiry Date <span class="text-danger">*</span></label>
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.accountexpdate.touched && formdata.controls.accountexpdate.invalid">Please Enter
+          Date</em>
+      </div>
+
+      <!-- logo image  -->
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="file" class="form-control " (change)="imageChanged($event)">
+          <label for="floatingName">Logo Image <span class="text-danger" *ngIf="id == '' ">*</span></label>
+        </div>
+
+      </div>
+
+      <!-- status  -->
+      <div class="col-md-3">
+        <label class="form-check-label" for="1">Status <span class="text-danger">*</span></label>
+        <div class="form-check form-switch">
+          <input class="form-check-input " style="zoom:1.5;" type="checkbox" id="1" formControlName="status">
+        </div>
+        <em class="error text-danger small"
+          *ngIf="formdata.controls.status.touched && formdata.controls.status.invalid">Please Enter Name</em>
+      </div>
+
+      <!-- hidden logopath -->
+      <input type="hidden" formControlName="logopath" >
+
+
+      <div>
+        <button type="submit" class="btn btn-primary" [disabled]="formdata.invalid">Submit</button>
+        <button type="reset" (click)="reset()" class="btn btn-danger ms-2">Reset</button>
+      </div>
+    </form><!-- End floating Labels Form -->
+
+    <hr>
+
+    <!-- ---------------------------------------------------Table-------------------------------------- -->
+
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Businesses</h5>
+
+          <!-- Table with stripped rows -->
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Action</th>
+                  <th>Sr.No. </th>
+                  <th>Name</th>
+                  <th>Ownername</th>
+                  <th>Address</th>
+                  <th>Town</th>
+                  <th>Email</th>
+                  <th>Tagline</th>
+                  <th>Mobile.No</th>
+                  <th>Password</th>
+                  <th>Logo</th>
+                  <th>Opening Date</th>
+                  <th>Expiry Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody *ngIf="datas">
+                <tr *ngFor="let data of datas,let i = index">
+                  <td class="d-flex"><button type="button" class="btn btn-info"><i class="bi bi-pencil-square"
+                        (click)="edit(data._id)"></i></button>
+                    <button type="button" class="btn btn-danger ms-2"><i class="bi bi-trash"
+                        (click)="delete(data._id)"></i></button>
+                  </td>
+                  <td>{{i+1}}</td>
+                  <td>{{data.name}}</td>
+                  <td>{{data.ownername}}</td>
+                  <td>{{data.address}}</td>
+                  <td>{{data.townid}}</td>
+                  <td>{{data.email}}</td>
+                  <td>{{data.tagline}}</td>
+                  <td>{{data.mobileno}}</td>
+                  <td>{{data.password}}</td>
+                  <td><img src="{{api.baseurl +  data.logopath}}" width="70px" alt="logo"></td>
+                  <td>{{data.accountopeningdate | date}}</td>
+                  <td>{{data.accountexpdate | date}}</td>
+                  <td>{{data.status}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End Table with stripped rows -->
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<div class="card p-4">
+    <div class="card-body">
+      <h5 >Admins</h5>
+  
+      <!-- Floating Labels Form -->
+      <form class="row g-3" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" >
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="text" class="form-control" placeholder="name" formControlName="name">
+            <label for="name"><span class="text-danger">*</span>Name</label>
+            <em class="text-danger small"  *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please Enter Name </em>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="text" class="form-control" placeholder="username" formControlName="username">
+            <label for="username"><span class="text-danger">*</span>Username</label>
+            <em class="text-danger small"  *ngIf="formdata.controls.username.touched && formdata.controls.username.invalid">Please Enter Username </em>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="text" class="form-control" placeholder="email" formControlName="email">
+            <label for="email"><span class="text-danger">*</span>Email</label>
+            <em class="text-danger small"  *ngIf="formdata.controls.email.touched && formdata.controls.email.invalid">Please Enter Email </em>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="text" class="form-control" placeholder="mobileno" formControlName="mobileno">
+            <label for="mobileno"><span class="text-danger">*</span>Mobileno</label>
+            <em class="text-danger small"  *ngIf="formdata.controls.mobileno.touched && formdata.controls.mobileno.invalid">Please Enter Mobileno </em>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="text" class="form-control" placeholder="password" formControlName="password">
+            <label for="password"><span class="text-danger">*</span>Password</label>
+            <em class="text-danger small"  *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please Enter Password </em>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <select class="form-select" id="floatingSelect" aria-label="State" formControlName="usertype"[(ngModel)]="user"
+            (change)="UserTypeChanged($event)">
+            <option value="Admin">Admin</option>
+            <option value="Manager">Manager</option>
+            <option value="User">User</option>
+  
+          </select>
+            <label for="usertype"><span class="text-danger">*</span>Usertype</label>
+            <em class="text-danger small"  *ngIf="formdata.controls.usertype.touched && formdata.controls.usertype.invalid">Please Enter Usertype </em>
+          </div>
+        </div>
+  
+  
+        <div class=>
+          <button type="submit" class="btn btn-primary" [disabled]="formdata.invalid">Submit</button>
+          <button type="reset" class="btn btn-danger ms-2">Reset</button>
+        </div>
+      </form><!-- End floating Labels Form -->
+  
+    </div>
+  </div>
+  
+  
+  <div class="col-lg-12">
+  
+    <div class="card p-4">
+      <div class="card-body">
+  
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="width:110px">Actions</th>
+              <th >Sr.No</th>
+              <th >Name</th>
+              <th >Username</th>
+              <th >Email</th>
+              <th >Mobileno</th>
+              <th >Password</th>
+              <th >Usertype</th>
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of datas; let i = index;">
+  
+               <td class="d-flex">
+  
+                <button type="button" class="btn btn-primary" (click)="edit(data._id)"><i class="bi bi-pencil-square me-1" ></i></button>
+                <button type="button" class="btn btn-danger ms-2" (click)="delete(data._id)"><i class="bi bi-trash me-1"></i></button>
+  
+  
+              </td>
+              <td>{{i+1}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.username}}</td>
+              <td>{{data.email}}</td>
+              <td>{{data.mobileno}}</td>
+              <td>{{data.password}}</td>
+              <td>{{data.usertype}}</td>
+  
+            </tr>
+  
+          </tbody>
+        </table>
+        <!-- End Table with stripped rows -->
+  
+      </div>
+    </div>
+  
+  
+  </div>
+  
